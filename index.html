@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2099091963182282"
+     crossorigin="anonymous"></script>
+     
+    <link rel="icon" type="image/png" href="image-removebg-preview (2).png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clinton Mown/Plow - Lawn & Snow Services</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+            min-height: 100vh;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .falling-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            overflow: hidden;
+        }
+
+        .falling-item {
+            position: absolute;
+            top: -50px;
+            animation: fall linear infinite;
+            opacity: 0.8;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+
+        .maple-leaf {
+            font-size: 40px;
+            color: #ff6600;
+            filter: drop-shadow(0 2px 4px rgba(255, 102, 0, 0.4));
+        }
+
+        .snowflake {
+            font-size: 25px;
+            color: #ffffff;
+        }
+
+        header {
+            background: #ffffff;
+            padding: 20px 40px;
+            border-radius: 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #2d5016;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .header-center {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .auth-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .auth-button {
+            background: #2d5016;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background 0.3s;
+        }
+
+        .auth-button:hover {
+            background: #3d6b1f;
+        }
+
+        .auth-button.secondary {
+            background: transparent;
+            color: #2d5016;
+            border: 2px solid #2d5016;
+        }
+
+        .auth-button.secondary:hover {
+            background: #f0f0f0;
+        }
+
+        .user-menu {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .user-name {
+            font-weight: 500;
+            color: #2d5016;
+        }
+
+        .logout-button {
+            background: #dc3545;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background 0.3s;
+        }
+
+        .logout-button:hover {
+            background: #c82333;
+        }
+
+        .season-toggle {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .season-label {
+            font-size: 14px;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .toggle-switch {
+            position: relative;
+            width: 60px;
+            height: 30px;
+            background: #3b82f6;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .toggle-switch.active {
+            background: #f97316;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 24px;
+            height: 24px;
+            background: white;
+            border-radius: 50%;
+            transition: transform 0.3s;
+        }
+
+        .toggle-switch.active .toggle-slider {
+            transform: translateX(30px);
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            max-width: 400px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal h2 {
+            color: #2d5016;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .modal .form-group {
+            margin-bottom: 20px;
+        }
+
+        .modal .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #1a1a1a;
+            font-weight: 500;
+        }
+
+        .modal .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .modal .form-group input:focus {
+            outline: none;
+            border-color: #2d5016;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 25px;
+        }
+
+        .modal-button {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+
+        .modal-button.primary {
+            background: #2d5016;
+            color: white;
+        }
+
+        .modal-button.primary:hover {
+            background: #3d6b1f;
+        }
+
+        .modal-button.secondary {
+            background: #e0e0e0;
+            color: #333;
+        }
+
+        .modal-button.secondary:hover {
+            background: #d0d0d0;
+        }
+
+        .modal-error {
+            background: #ffebee;
+            color: #c62828;
+            padding: 12px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            display: none;
+        }
+
+        .modal-error.active {
+            display: block;
+        }
+
+        .modal-success {
+            background: #e8f5e9;
+            color: #2e7d32;
+            padding: 12px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            display: none;
+        }
+
+        .modal-success.active {
+            display: block;
+        }
+
+        .modal-link {
+            text-align: center;
+            margin-top: 20px;
+            color: #666;
+        }
+
+        .modal-link a {
+            color: #2d5016;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        .modal-link a:hover {
+            color: #3d6b1f;
+        }
+
+        .service-area-banner {
+            background: #fff3cd;
+            padding: 15px;
+            text-align: center;
+            border-bottom: 2px solid #ffc107;
+        }
+
+        .service-area-banner p {
+            margin: 0;
+            color: #856404;
+            font-weight: 500;
+            font-size: 16px;
+        }
+
+        .service-area-banner strong {
+            color: #2d5016;
+        }
+
+        .hero {
+            background: #ffffff;
+            padding: 60px;
+            border-radius: 0;
+            text-align: center;
+            margin-bottom: 40px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            color: #1a1a1a;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .cta-button {
+            background: #2d5016;
+            color: white;
+            padding: 15px 40px;
+            font-size: 18px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s;
+            box-shadow: none;
+        }
+
+        .cta-button:hover {
+            background: #3d6b1f;
+        }
+
+        .cta-button.winter {
+            background: #3b82f6;
+        }
+
+        .cta-button.winter:hover {
+            background: #2563eb;
+        }
+
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .service-card {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s;
+            cursor: pointer;
+            border: 1px solid #e0e0e0;
+        }
+
+        .service-card:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-icon {
+            font-size: 50px;
+            margin-bottom: 15px;
+        }
+
+        .service-card h3 {
+            color: #1a1a1a;
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+
+        .service-card p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .price {
+            font-size: 28px;
+            color: #2d5016;
+            font-weight: bold;
+        }
+
+        .price.winter {
+            color: #3b82f6;
+        }
+
+        .booking-form {
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: none;
+            border: 1px solid #e0e0e0;
+        }
+
+        .booking-form.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #1a1a1a;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #2d5016;
+        }
+
+        .submit-button {
+            background: #2d5016;
+            color: white;
+            padding: 15px 40px;
+            font-size: 18px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.3s;
+        }
+
+        .submit-button:hover {
+            background: #3d6b1f;
+        }
+
+        .submit-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .booking-summary {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            display: none;
+        }
+
+        .booking-summary.active {
+            display: block;
+        }
+
+        .booking-summary h3 {
+            color: #2d5016;
+            margin-bottom: 15px;
+        }
+
+        .error-message {
+            background: #ffebee;
+            color: #c62828;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            display: none;
+        }
+
+        .error-message.active {
+            display: block;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+            color: #2d5016;
+            font-weight: 500;
+        }
+
+        .loading.active {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .header-center {
+                position: static;
+                transform: none;
+            }
+        }
+    </style>
+</head>
+<body>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2099091963182282"
+     crossorigin="anonymous"></script>
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-2099091963182282"
+     data-ad-slot="2347381216"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+    <div class="falling-container" id="fallingContainer"></div>
+
+    <div class="container">
+        <header>
+            <div class="logo">
+                🌱 Clinton Mown/Plow
+            </div>
+            <div class="header-center">
+                <div class="season-toggle">
+                    <span class="season-label" id="seasonLabel">❄️ Winter</span>
+                    <div class="toggle-switch" id="seasonToggle" onclick="toggleSeason()">
+                        <div class="toggle-slider"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="auth-section" id="authSection">
+                <button class="auth-button secondary" onclick="showSignIn()">Sign In</button>
+                <button class="auth-button" onclick="showSignUp()">Sign Up</button>
+            </div>
+            <div class="user-menu" id="userMenu" style="display: none;">
+                <span class="user-name" id="userName"></span>
+                <button class="logout-button" onclick="logout()">Logout</button>
+            </div>
+        </header>
+
+        <div class="service-area-banner">
+            <p>📍 Service Area: <strong>Richmond Hill, Ontario Only</strong> - We currently serve Richmond Hill and surrounding areas</p>
+        </div>
+
+        <!-- Sign In Modal -->
+        <div class="modal-overlay" id="signInModal">
+            <div class="modal">
+                <h2>Sign In</h2>
+                <div class="modal-error" id="signInError"></div>
+                <div class="modal-success" id="signInSuccess"></div>
+                <form onsubmit="handleSignIn(event)">
+                    <div class="form-group">
+                        <label for="signInEmail">Email</label>
+                        <input type="email" id="signInEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signInPassword">Password</label>
+                        <input type="password" id="signInPassword" required>
+                    </div>
+                    <div class="modal-buttons">
+                        <button type="button" class="modal-button secondary" onclick="closeSignIn()">Cancel</button>
+                        <button type="submit" class="modal-button primary">Sign In</button>
+                    </div>
+                </form>
+                <div class="modal-link">
+                    Don't have an account? <a onclick="switchToSignUp()">Sign Up</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sign Up Modal -->
+        <div class="modal-overlay" id="signUpModal">
+            <div class="modal">
+                <h2>Sign Up</h2>
+                <div class="modal-error" id="signUpError"></div>
+                <div class="modal-success" id="signUpSuccess"></div>
+                <form onsubmit="handleSignUp(event)">
+                    <div class="form-group">
+                        <label for="signUpName">Full Name</label>
+                        <input type="text" id="signUpName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signUpEmail">Email</label>
+                        <input type="email" id="signUpEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signUpPassword">Password</label>
+                        <input type="password" id="signUpPassword" required minlength="6">
+                    </div>
+                    <div class="form-group">
+                        <label for="signUpPasswordConfirm">Confirm Password</label>
+                        <input type="password" id="signUpPasswordConfirm" required minlength="6">
+                    </div>
+                    <div class="modal-buttons">
+                        <button type="button" class="modal-button secondary" onclick="closeSignUp()">Cancel</button>
+                        <button type="submit" class="modal-button primary">Sign Up</button>
+                    </div>
+                </form>
+                <div class="modal-link">
+                    Already have an account? <a onclick="switchToSignIn()">Sign In</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Summer Services -->
+        <div id="summerSection" style="display: none;">
+            <div class="hero">
+                <h1>Professional Lawn Care at Your Fingertips</h1>
+                <p>Book expert lawn mowing services in minutes. Beautiful lawns, hassle-free.</p>
+                <button class="cta-button" onclick="showBooking('summer')">Book Lawn Service</button>
+            </div>
+
+            <div class="services">
+                <div class="service-card" onclick="selectService('basic-mow')">
+                    <div class="service-icon">🏡</div>
+                    <h3>Basic Mow</h3>
+                    <p>Standard lawn mowing with edging and cleanup. Perfect for regular maintenance.</p>
+                    <div class="price">$45</div>
+                </div>
+
+                <div class="service-card" onclick="selectService('premium-care')">
+                    <div class="service-icon">✨</div>
+                    <h3>Premium Care</h3>
+                    <p>Mowing, edging, trimming, blowing, and fertilization for a pristine lawn.</p>
+                    <div class="price">$85</div>
+                </div>
+
+                <div class="service-card" onclick="selectService('full-service')">
+                    <div class="service-icon">🌟</div>
+                    <h3>Full Service</h3>
+                    <p>Complete lawn care including aeration, weed control, and seasonal treatments.</p>
+                    <div class="price">$125</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Winter Services -->
+        <div id="winterSection" style="display: none;">
+            <div class="hero">
+                <h1>Professional Snow Plowing Services</h1>
+                <p>Keep your driveway and property clear all winter long. Reliable snow removal.</p>
+                <button class="cta-button winter" onclick="showBooking('winter')">Book Snow Plowing</button>
+            </div>
+
+            <div class="services">
+                <div class="service-card" onclick="selectService('basic-plow')">
+                    <div class="service-icon">🚜</div>
+                    <h3>Basic Plow</h3>
+                    <p>Standard driveway snow plowing. Quick and efficient snow removal service.</p>
+                    <div class="price winter">$45</div>
+                </div>
+
+                <div class="service-card" onclick="selectService('premium-plow')">
+                    <div class="service-icon">❄️</div>
+                    <h3>Premium Snow Removal</h3>
+                    <p>Plowing, salting, and walkway clearing for complete winter maintenance.</p>
+                    <div class="price winter">$85</div>
+                </div>
+
+                <div class="service-card" onclick="selectService('full-service-winter')">
+                    <div class="service-icon">🌟</div>
+                    <h3>Full Service</h3>
+                    <p>Complete winter service with plowing, salting, walkway clearing, and ice management.</p>
+                    <div class="price winter">$125</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="booking-form" id="bookingForm">
+            <h2 style="color: #2c3e50; margin-bottom: 30px;" id="bookingTitle">Book Your Service</h2>
+            <form onsubmit="submitBooking(event)">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="address">Property Address</label>
+                    <input type="text" id="address" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="service">Service Type</label>
+                    <select id="service" required>
+                        <option value="">Select a service</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="date">Preferred Date</label>
+                    <input type="date" id="date" required>
+                </div>
+
+                <div class="form-group" id="propertySize">
+                    <label for="size" id="sizeLabel">Property Size (sq ft)</label>
+                    <input type="number" id="size" placeholder="e.g., 5000" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="notes">Additional Notes</label>
+                    <textarea id="notes" rows="4" placeholder="Any special instructions or concerns?"></textarea>
+                </div>
+
+                <button type="submit" class="submit-button" id="submitBtn">Submit Booking</button>
+            </form>
+
+            <div class="loading" id="loading">
+                Sending booking confirmation...
+            </div>
+
+            <div class="booking-summary" id="bookingSummary">
+                <h3>✅ Booking Confirmed!</h3>
+                <p id="summaryText"></p>
+            </div>
+
+            <div class="error-message" id="errorMessage">
+                ⚠️ There was an error sending the email. Please contact us directly at clintonngaokere951@gmail.com
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    
+    <script>
+        emailjs.init('tFndjI3qNJNGxWnSW');
+
+        let currentUser = null;
+        let bookings = [];
+        let isSummerMode = false;
+        let currentServiceType = 'winter';
+        let userData = JSON.parse(localStorage.getItem('clintonMownPlowUsers') || '{}');
+
+        window.onload = async function() {
+            await loadCurrentSession();
+            updateSeasonDisplay();
+            createFallingItems();
+            updateAuthUI();
+        };
+
+        async function loadCurrentSession() {
+            const loggedInUser = localStorage.getItem('clintonMownPlowCurrentUser');
+            if (loggedInUser && userData[loggedInUser]) {
+                currentUser = userData[loggedInUser];
+                console.log('Session restored:', currentUser);
+            }
+        }
+
+        function saveCurrentSession() {
+            if (currentUser) {
+                localStorage.setItem('clintonMownPlowCurrentUser', currentUser.email);
+                console.log('Session saved');
+            }
+        }
+
+        function clearCurrentSession() {
+            localStorage.removeItem('clintonMownPlowCurrentUser');
+            console.log('Session cleared');
+        }
+
+        function createFallingItems() {
+            const container = document.getElementById('fallingContainer');
+            container.innerHTML = '';
+            
+            const itemCount = 15;
+            const item = isSummerMode ? '🍁' : '❄️';
+            const className = isSummerMode ? 'maple-leaf' : 'snowflake';
+            
+            for (let i = 0; i < itemCount; i++) {
+                const elem = document.createElement('div');
+                elem.className = `falling-item ${className}`;
+                elem.textContent = item;
+                elem.style.left = Math.random() * 100 + '%';
+                elem.style.animationDuration = (Math.random() * 3 + 5) + 's';
+                elem.style.animationDelay = Math.random() * 5 + 's';
+                container.appendChild(elem);
+            }
+        }
+
+        function showSignIn() {
+            document.getElementById('signInModal').classList.add('active');
+            document.getElementById('signInError').classList.remove('active');
+            document.getElementById('signInSuccess').classList.remove('active');
+        }
+
+        function closeSignIn() {
+            document.getElementById('signInModal').classList.remove('active');
+            document.getElementById('signInEmail').value = '';
+            document.getElementById('signInPassword').value = '';
+        }
+
+        function showSignUp() {
+            document.getElementById('signUpModal').classList.add('active');
+            document.getElementById('signUpError').classList.remove('active');
+            document.getElementById('signUpSuccess').classList.remove('active');
+        }
+
+        function closeSignUp() {
+            document.getElementById('signUpModal').classList.remove('active');
+            document.getElementById('signUpName').value = '';
+            document.getElementById('signUpEmail').value = '';
+            document.getElementById('signUpPassword').value = '';
+            document.getElementById('signUpPasswordConfirm').value = '';
+        }
+
+        function switchToSignUp() {
+            closeSignIn();
+            showSignUp();
+        }
+
+        function switchToSignIn() {
+            closeSignUp();
+            showSignIn();
+        }
+
+        function handleSignUp(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('signUpName').value;
+            const email = document.getElementById('signUpEmail').value;
+            const password = document.getElementById('signUpPassword').value;
+            const passwordConfirm = document.getElementById('signUpPasswordConfirm').value;
+            const errorDiv = document.getElementById('signUpError');
+            const successDiv = document.getElementById('signUpSuccess');
+            
+            errorDiv.classList.remove('active');
+            successDiv.classList.remove('active');
+            
+            if (password.length < 6) {
+                errorDiv.textContent = 'Password must be at least 6 characters long!';
+                errorDiv.classList.add('active');
+                return;
+            }
+            
+            if (password !== passwordConfirm) {
+                errorDiv.textContent = 'Passwords do not match!';
+                errorDiv.classList.add('active');
+                return;
+            }
+            
+            if (userData[email]) {
+                errorDiv.textContent = 'An account with this email already exists!';
+                errorDiv.classList.add('active');
+                return;
+            }
+            
+            const newUser = {
+                name: name,
+                email: email,
+                password: password,
+                joinDate: new Date().toISOString()
+            };
+            
+            userData[email] = newUser;
+            localStorage.setItem('clintonMownPlowUsers', JSON.stringify(userData));
+            
+            successDiv.textContent = 'Account created successfully! You can now sign in.';
+            successDiv.classList.add('active');
+            
+            setTimeout(() => {
+                closeSignUp();
+                showSignIn();
+                document.getElementById('signInEmail').value = email;
+            }, 2000);
+        }
+
+        function handleSignIn(event) {
+            event.preventDefault();
+            
+            const email = document.getElementById('signInEmail').value;
+            const password = document.getElementById('signInPassword').value;
+            const errorDiv = document.getElementById('signInError');
+            const successDiv = document.getElementById('signInSuccess');
+            
+            errorDiv.classList.remove('active');
+            successDiv.classList.remove('active');
+            
+            if (!userData[email]) {
+                errorDiv.textContent = 'No account found with this email!';
+                errorDiv.classList.add('active');
+                return;
+            }
+            
+            if (userData[email].password !== password) {
+                errorDiv.textContent = 'Invalid password!';
+                errorDiv.classList.add('active');
+                return;
+            }
+            
+            currentUser = userData[email];
+            saveCurrentSession();
+            
+            successDiv.textContent = 'Login successful! Welcome back!';
+            successDiv.classList.add('active');
+            
+            setTimeout(() => {
+                updateAuthUI();
+                closeSignIn();
+                
+                if (currentUser) {
+                    document.getElementById('name').value = currentUser.name;
+                    document.getElementById('email').value = currentUser.email;
+                }
+            }, 1500);
+        }
+
+        function logout() {
+            currentUser = null;
+            clearCurrentSession();
+            updateAuthUI();
+            
+            document.getElementById('name').value = '';
+            document.getElementById('email').value = '';
+        }
+
+        function updateAuthUI() {
+            const authSection = document.getElementById('authSection');
+            const userMenu = document.getElementById('userMenu');
+            const userName = document.getElementById('userName');
+            
+            if (currentUser) {
+                authSection.style.display = 'none';
+                userMenu.style.display = 'flex';
+                userName.textContent = `Welcome, ${currentUser.name}`;
+            } else {
+                authSection.style.display = 'flex';
+                userMenu.style.display = 'none';
+            }
+        }
+
+        function toggleSeason() {
+            isSummerMode = !isSummerMode;
+            const toggle = document.getElementById('seasonToggle');
+            
+            if (isSummerMode) {
+                toggle.classList.add('active');
+            } else {
+                toggle.classList.remove('active');
+            }
+            
+            updateSeasonDisplay();
+            createFallingItems();
+        }
+
+        function updateSeasonDisplay() {
+            const label = document.getElementById('seasonLabel');
+            const summerSection = document.getElementById('summerSection');
+            const winterSection = document.getElementById('winterSection');
+            const bookingForm = document.getElementById('bookingForm');
+            
+            if (isSummerMode) {
+                label.textContent = '🍁 Summer';
+                summerSection.style.display = 'block';
+                winterSection.style.display = 'none';
+                currentServiceType = 'summer';
+                document.body.style.background = '#f5f5f5';
+            } else {
+                label.textContent = '❄️ Winter';
+                summerSection.style.display = 'none';
+                winterSection.style.display = 'block';
+                currentServiceType = 'winter';
+                document.body.style.background = '#e0f2fe';
+            }
+            bookingForm.classList.remove('active');
+            updateServiceOptions();
+        }
+
+        function updateServiceOptions() {
+            const serviceSelect = document.getElementById('service');
+            const sizeLabel = document.getElementById('sizeLabel');
+            
+            if (currentServiceType === 'summer') {
+                serviceSelect.innerHTML = `
+                    <option value="">Select a service</option>
+                    <option value="basic-mow">Basic Mow - $45</option>
+                    <option value="premium-care">Premium Care - $85</option>
+                    <option value="full-service">Full Service - $125</option>
+                `;
+                sizeLabel.textContent = 'Lawn Size (sq ft)';
+            } else {
+                serviceSelect.innerHTML = `
+                    <option value="">Select a service</option>
+                    <option value="basic-plow">Basic Plow - $45</option>
+                    <option value="premium-plow">Premium Snow Removal - $85</option>
+                    <option value="full-service-winter">Full Service - $125</option>
+                `;
+                sizeLabel.textContent = 'Driveway Size (sq ft)';
+            }
+        }
+
+        function showBooking(type) {
+            currentServiceType = type;
+            const form = document.getElementById('bookingForm');
+            const title = document.getElementById('bookingTitle');
+            title.textContent = type === 'summer' ? 'Book Your Lawn Service' : 'Book Your Snow Plowing Service';
+            
+            if (currentUser) {
+                document.getElementById('name').value = currentUser.name;
+                document.getElementById('email').value = currentUser.email;
+            }
+            
+            form.classList.add('active');
+            form.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function selectService(serviceType) {
+            const serviceSelect = document.getElementById('service');
+            serviceSelect.value = serviceType;
+            showBooking(currentServiceType);
+        }
+
+        async function submitBooking(event) {
+            event.preventDefault();
+
+            const submitBtn = document.getElementById('submitBtn');
+            const loading = document.getElementById('loading');
+            const summary = document.getElementById('bookingSummary');
+            const errorMsg = document.getElementById('errorMessage');
+
+            summary.classList.remove('active');
+            errorMsg.classList.remove('active');
+            submitBtn.disabled = true;
+            loading.classList.add('active');
+
+            const booking = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                address: document.getElementById('address').value,
+                service: document.getElementById('service').value,
+                date: document.getElementById('date').value,
+                size: document.getElementById('size').value,
+                notes: document.getElementById('notes').value || 'No additional notes',
+                serviceType: currentServiceType,
+                userId: currentUser ? currentUser.email : null
+            };
+
+            const serviceNames = {
+                'basic-mow': 'Basic Mow',
+                'premium-care': 'Premium Care',
+                'full-service': 'Full Service',
+                'basic-plow': 'Basic Plow',
+                'premium-plow': 'Premium Snow Removal',
+                'full-service-winter': 'Full Service'
+            };
+
+            const servicePrices = {
+                'basic-mow': '$45',
+                'premium-care': '$85',
+                'full-service': '$125',
+                'basic-plow': '$45',
+                'premium-plow': '$85',
+                'full-service-winter': '$125'
+            };
+
+            const emailParams = {
+                to_email: 'clintonngaokere951@gmail.com',
+                customer_name: booking.name,
+                customer_email: booking.email,
+                customer_phone: booking.phone,
+                property_address: booking.address,
+                service_type: serviceNames[booking.service],
+                service_price: servicePrices[booking.service],
+                preferred_date: new Date(booking.date).toLocaleDateString(),
+                property_size: booking.size,
+                additional_notes: booking.notes,
+                season: currentServiceType === 'summer' ? 'Lawn Service' : 'Snow Plowing'
+            };
+
+            try {
+                await emailjs.send('service_53tonlw', 'template_yc0qild', emailParams);
+
+                bookings.push(booking);
+
+                const summaryText = document.getElementById('summaryText');
+                summaryText.innerHTML = `
+                    <strong>Name:</strong> ${booking.name}<br>
+                    <strong>Service:</strong> ${serviceNames[booking.service]}<br>
+                    <strong>Date:</strong> ${new Date(booking.date).toLocaleDateString()}<br>
+                    <strong>Address:</strong> ${booking.address}<br>
+                    <strong>Property Size:</strong> ${booking.size} sq ft<br><br>
+                    ✉️ Confirmation email sent to clintonngaokere951@gmail.com and ${booking.email}!
+                `;
+
+                summary.classList.add('active');
+                
+                document.getElementById('phone').value = '';
+                document.getElementById('address').value = '';
+                document.getElementById('service').value = '';
+                document.getElementById('date').value = '';
+                document.getElementById('size').value = '';
+                document.getElementById('notes').value = '';
+
+            } catch (error) {
+                console.error('Email send error:', error);
+                errorMsg.classList.add('active');
+            } finally {
+                loading.classList.remove('active');
+                submitBtn.disabled = false;
+            }
+        }
+    </script>
+
+</body>
+</html>
