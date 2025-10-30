@@ -4,7 +4,6 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2099091963182282"
      crossorigin="anonymous"></script>
      
-     
     <link rel="icon" type="image/png" href="image-removebg-preview (2).png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -39,7 +38,7 @@
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: 9999;
+            z-index: 0;
             overflow: hidden;
         }
 
@@ -73,10 +72,14 @@
             border-radius: 0;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             margin-bottom: 0;
+            position: relative;
+        }
+
+        .header-top {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: relative;
+            margin-bottom: 20px;
         }
 
         .logo {
@@ -88,13 +91,51 @@
             gap: 10px;
         }
 
-        .header-center {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .season-toggle {
             display: flex;
             align-items: center;
             gap: 15px;
+        }
+
+        .season-label {
+            font-size: 14px;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .toggle-switch {
+            position: relative;
+            width: 60px;
+            height: 30px;
+            background: #3b82f6;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .toggle-switch.active {
+            background: #f97316;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 24px;
+            height: 24px;
+            background: white;
+            border-radius: 50%;
+            transition: transform 0.3s;
+        }
+
+        .toggle-switch.active .toggle-slider {
+            transform: translateX(30px);
         }
 
         .auth-section {
@@ -154,48 +195,55 @@
             background: #c82333;
         }
 
-        .season-toggle {
+        nav {
+            background: transparent;
+            border-bottom: 2px solid #e0e0e0;
+            overflow: hidden;
+        }
+
+        nav ul {
+            list-style: none;
             display: flex;
-            align-items: center;
-            gap: 15px;
+            justify-content: flex-start;
+            padding: 0;
+            gap: 0;
         }
 
-        .season-label {
-            font-size: 14px;
-            color: #666;
-            font-weight: 500;
+        nav ul li {
+            text-align: center;
         }
 
-        .toggle-switch {
-            position: relative;
-            width: 60px;
-            height: 30px;
-            background: #3b82f6;
-            border-radius: 30px;
+        nav ul li a {
+            display: block;
+            padding: 15px 35px;
+            color: #2d5016;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s;
             cursor: pointer;
-            transition: background 0.3s;
+            border-bottom: 3px solid transparent;
+            position: relative;
         }
 
-        .toggle-switch.active {
-            background: #f97316;
+        nav ul li a:hover {
+            color: #3d6b1f;
+            border-bottom: 3px solid #3d6b1f;
         }
 
-        .toggle-slider {
-            position: absolute;
-            top: 3px;
-            left: 3px;
-            width: 24px;
-            height: 24px;
-            background: white;
-            border-radius: 50%;
-            transition: transform 0.3s;
+        nav ul li a.active {
+            color: #2d5016;
+            border-bottom: 3px solid #2d5016;
         }
 
-        .toggle-switch.active .toggle-slider {
-            transform: translateX(30px);
+        .page-section {
+            display: none;
         }
 
-        /* Modal Styles */
+        .page-section.active {
+            display: block;
+        }
+
         .modal-overlay {
             display: none;
             position: fixed;
@@ -374,30 +422,6 @@
             line-height: 1.6;
         }
 
-        footer {
-            background: #ffffff;
-            padding: 30px 40px;
-            border-radius: 0;
-            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
-            margin-top: 40px;
-            text-align: center;
-        }
-
-        footer p {
-            color: #666;
-            margin-bottom: 10px;
-        }
-
-        footer a {
-            color: #2d5016;
-            text-decoration: none;
-            margin: 0 10px;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-
         .service-area-banner {
             background: #fff3cd;
             padding: 15px;
@@ -416,6 +440,221 @@
             color: #2d5016;
         }
 
+        .hero-home {
+            background: linear-gradient(135deg, #2d5016 0%, #3d6b1f 100%);
+            padding: 80px 60px;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 40px;
+            color: white;
+        }
+
+        .hero-home h1 {
+            font-size: 52px;
+            margin-bottom: 20px;
+        }
+
+        .hero-home p {
+            font-size: 22px;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .hero-home .cta-button {
+            background: white;
+            color: #2d5016;
+            padding: 18px 45px;
+            font-size: 18px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            font-weight: 600;
+        }
+
+        .hero-home .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .feature-card .icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            color: #2d5016;
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .content-section {
+            background: white;
+            padding: 50px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+        }
+
+        .content-section h2 {
+            color: #2d5016;
+            margin-bottom: 25px;
+            font-size: 36px;
+        }
+
+        .content-section h3 {
+            color: #2d5016;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        .content-section p {
+            color: #666;
+            line-height: 1.8;
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .content-section ul {
+            margin-left: 30px;
+            margin-bottom: 20px;
+        }
+
+        .content-section li {
+            color: #666;
+            line-height: 1.8;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .about-hero {
+            background: white;
+            padding: 60px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+        }
+
+        .about-hero h1 {
+            color: #2d5016;
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .about-hero p {
+            color: #666;
+            font-size: 20px;
+            line-height: 1.8;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .value-card {
+            background: white;
+            padding: 35px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid #2d5016;
+        }
+
+        .value-card h3 {
+            color: #2d5016;
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+
+        .value-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .contact-hero {
+            background: white;
+            padding: 60px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .contact-hero h1 {
+            color: #2d5016;
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .contact-hero p {
+            color: #666;
+            font-size: 20px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .contact-card {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .contact-card .icon {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+
+        .contact-card h3 {
+            color: #2d5016;
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+
+        .contact-card p {
+            color: #666;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .contact-card a {
+            color: #2d5016;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .contact-card a:hover {
+            text-decoration: underline;
+        }
+
         .hero {
             background: #ffffff;
             padding: 60px;
@@ -429,12 +668,16 @@
             font-size: 48px;
             color: #1a1a1a;
             margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
         }
 
         .hero p {
             font-size: 20px;
             color: #666;
             margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
         }
 
         .cta-button {
@@ -476,6 +719,8 @@
             transition: box-shadow 0.3s;
             cursor: pointer;
             border: 1px solid #e0e0e0;
+            position: relative;
+            z-index: 1;
         }
 
         .service-card:hover {
@@ -516,6 +761,7 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             display: none;
             border: 1px solid #e0e0e0;
+            margin-top: 40px;
         }
 
         .booking-form.active {
@@ -614,55 +860,94 @@
             display: block;
         }
 
+        footer {
+            background: #ffffff;
+            padding: 30px 40px;
+            border-radius: 0;
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        footer p {
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        footer a {
+            color: #2d5016;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
         @media (max-width: 768px) {
-            header {
+            .header-top {
                 flex-direction: column;
                 gap: 15px;
             }
 
-            .header-center {
-                position: static;
-                transform: none;
+            nav ul {
+                flex-direction: column;
+            }
+
+            nav ul li {
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            nav ul li:last-child {
+                border-bottom: none;
+            }
+
+            .hero-home h1 {
+                font-size: 36px;
+            }
+
+            .hero-home p {
+                font-size: 18px;
             }
         }
     </style>
 </head>
 <body>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2099091963182282"
-     crossorigin="anonymous"></script>
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-2099091963182282"
-     data-ad-slot="2347381216"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
 
     <div class="falling-container" id="fallingContainer"></div>
 
     <div class="container">
         <header>
-            <div class="logo">
-                🌱 Clinton Mown/Plow
-            </div>
-            <div class="header-center">
-                <div class="season-toggle">
-                    <span class="season-label" id="seasonLabel">❄️ Winter</span>
-                    <div class="toggle-switch" id="seasonToggle" onclick="toggleSeason()">
-                        <div class="toggle-slider"></div>
+            <div class="header-top">
+                <div class="logo">
+                    🌱 Clinton Mown/Plow
+                </div>
+                <div class="header-right">
+                    <div class="season-toggle">
+                        <span class="season-label" id="seasonLabel">❄️ Winter</span>
+                        <div class="toggle-switch" id="seasonToggle" onclick="toggleSeason()">
+                            <div class="toggle-slider"></div>
+                        </div>
+                    </div>
+                    <div class="auth-section" id="authSection">
+                        <button class="auth-button secondary" onclick="showSignIn()">Sign In</button>
+                        <button class="auth-button" onclick="showSignUp()">Sign Up</button>
+                    </div>
+                    <div class="user-menu" id="userMenu" style="display: none;">
+                        <span class="user-name" id="userName"></span>
+                        <button class="logout-button" onclick="logout()">Logout</button>
                     </div>
                 </div>
             </div>
-            <div class="auth-section" id="authSection">
-                <button class="auth-button secondary" onclick="showSignIn()">Sign In</button>
-                <button class="auth-button" onclick="showSignUp()">Sign Up</button>
-            </div>
-            <div class="user-menu" id="userMenu" style="display: none;">
-                <span class="user-name" id="userName"></span>
-                <button class="logout-button" onclick="logout()">Logout</button>
-            </div>
+            
+            <nav>
+                <ul>
+                    <li><a onclick="showPage('home')" class="active" id="nav-home">Home</a></li>
+                    <li><a onclick="showPage('book')" id="nav-book">Book Service</a></li>
+                    <li><a onclick="showPage('about')" id="nav-about">About Us</a></li>
+                    <li><a onclick="showPage('contact')" id="nav-contact">Contact Us</a></li>
+                </ul>
+            </nav>
         </header>
 
         <div class="service-area-banner">
@@ -734,7 +1019,7 @@
             <div class="modal privacy-modal">
                 <h2>Privacy Policy</h2>
                 <div class="privacy-content">
-                    <p><strong>Effective Date:</strong> October 27, 2025</p>
+                    <p><strong>Effective Date:</strong> October 30, 2025</p>
                     
                     <h3>1. Introduction</h3>
                     <p>Clinton Mown/Plow ("we," "us," or "our") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our lawn care and snow plowing booking service.</p>
@@ -744,7 +1029,7 @@
                     <ul>
                         <li><strong>Personal Information:</strong> Name, email address, phone number, and property address that you provide when creating an account or booking services.</li>
                         <li><strong>Service Information:</strong> Details about the services you book, including service type, preferred dates, property size, and special instructions.</li>
-                        <li><strong>Account Information:</strong> Login credentials and account preferences stored locally in your browser.</li>
+                        <li><strong>Account Information:</strong> Login credentials and account preferences.</li>
                         <li><strong>Technical Information:</strong> Browser type, device information, and usage data collected automatically.</li>
                     </ul>
                     
@@ -768,7 +1053,7 @@
                     </ul>
                     
                     <h3>5. Data Storage and Security</h3>
-                    <p>Your account information is stored locally in your browser using localStorage. We implement reasonable security measures to protect your information, but no method of transmission over the internet is 100% secure.</p>
+                    <p>We implement reasonable security measures to protect your information, but no method of transmission over the internet is 100% secure.</p>
                     
                     <h3>6. Your Rights and Choices</h3>
                     <p>You have the right to:</p>
@@ -780,7 +1065,7 @@
                     </ul>
                     
                     <h3>7. Cookies and Tracking</h3>
-                    <p>We use localStorage to maintain your login session and preferences. We also use Google AdSense which may use cookies for advertising purposes. You can control cookies through your browser settings.</p>
+                    <p>We use cookies to maintain your preferences. We also use Google AdSense which may use cookies for advertising purposes. You can control cookies through your browser settings.</p>
                     
                     <h3>8. Children's Privacy</h3>
                     <p>Our services are not intended for individuals under the age of 18. We do not knowingly collect personal information from children.</p>
@@ -799,129 +1084,292 @@
             </div>
         </div>
 
-        <!-- Summer Services -->
-        <div id="summerSection" style="display: none;">
-            <div class="hero">
-                <h1>Professional Lawn Care at Your Fingertips</h1>
-                <p>Book expert lawn mowing services in minutes. Beautiful lawns, hassle-free.</p>
-                <button class="cta-button" onclick="showBooking('summer')">Book Lawn Service</button>
+        <!-- HOME PAGE -->
+        <div id="homePage" class="page-section active">
+            <div class="hero-home">
+                <h1>Welcome to Clinton Mown/Plow</h1>
+                <p>Your trusted partner for professional lawn care and snow removal services in Richmond Hill, Ontario</p>
+                <button class="cta-button" onclick="showPage('book')">Get Started Today</button>
             </div>
 
-            <div class="services">
-                <div class="service-card" onclick="selectService('basic-mow')">
-                    <div class="service-icon">🏡</div>
-                    <h3>Basic Mow</h3>
-                    <p>Standard lawn mowing with edging and cleanup. Perfect for regular maintenance.</p>
-                    <div class="price">$45</div>
+            <div class="features">
+                <div class="feature-card">
+                    <div class="icon">🌿</div>
+                    <h3>Expert Lawn Care</h3>
+                    <p>Professional mowing, edging, and maintenance to keep your lawn looking pristine all season long.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">❄️</div>
+                    <h3>Reliable Snow Removal</h3>
+                    <p>Fast and efficient snow plowing services to keep your property safe and accessible throughout winter.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">⭐</div>
+                    <h3>Quality Guaranteed</h3>
+                    <p>We pride ourselves on delivering exceptional service with attention to detail and customer satisfaction.</p>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2>What We Do</h2>
+                <p>Clinton Mown/Plow is Richmond Hill's premier provider of residential and commercial lawn care and snow removal services. We understand that maintaining your property through all seasons can be challenging, which is why we're here to help.</p>
+                
+                <p><strong>Our Summer Services Include:</strong></p>
+                <ul>
+                    <li>Professional lawn mowing with precise edging</li>
+                    <li>Grass trimming and weed control</li>
+                    <li>Lawn fertilization and treatment programs</li>
+                    <li>Complete property cleanup and maintenance</li>
+                    <li>Seasonal aeration and overseeding</li>
+                </ul>
+
+                <p><strong>Our Winter Services Include:</strong></p>
+                <ul>
+                    <li>Residential and commercial snow plowing</li>
+                    <li>Driveway and parking lot clearing</li>
+                    <li>Walkway shoveling and salting</li>
+                    <li>Ice management and prevention</li>
+                    <li>24/7 emergency snow removal services</li>
+                </ul>
+
+                <p>Whether you need regular lawn maintenance during the growing season or reliable snow removal when winter arrives, Clinton Mown/Plow is your year-round property care solution. We use professional-grade equipment and proven techniques to ensure your property always looks its best and remains safe and accessible.</p>
+            </div>
+        </div>
+
+        <!-- BOOK SERVICE PAGE -->
+        <div id="bookPage" class="page-section">
+            <!-- Summer Services -->
+            <div id="summerSection" style="display: none;">
+                <div class="hero">
+                    <h1>Professional Lawn Care at Your Fingertips</h1>
+                    <p>Book expert lawn mowing services in minutes. Beautiful lawns, hassle-free.</p>
+                    <button class="cta-button" onclick="showBooking('summer')">Book Lawn Service</button>
                 </div>
 
-                <div class="service-card" onclick="selectService('premium-care')">
-                    <div class="service-icon">✨</div>
-                    <h3>Premium Care</h3>
-                    <p>Mowing, edging, trimming, blowing, and fertilization for a pristine lawn.</p>
-                    <div class="price">$85</div>
+                <div class="services">
+                    <div class="service-card" onclick="selectService('basic-mow')">
+                        <div class="service-icon">🏡</div>
+                        <h3>Basic Mow</h3>
+                        <p>Standard lawn mowing with edging and cleanup. Perfect for regular maintenance.</p>
+                        <div class="price">$45</div>
+                    </div>
+
+                    <div class="service-card" onclick="selectService('premium-care')">
+                        <div class="service-icon">✨</div>
+                        <h3>Premium Care</h3>
+                        <p>Mowing, edging, trimming, blowing, and fertilization for a pristine lawn.</p>
+                        <div class="price">$85</div>
+                    </div>
+
+                    <div class="service-card" onclick="selectService('full-service')">
+                        <div class="service-icon">🌟</div>
+                        <h3>Full Service</h3>
+                        <p>Complete lawn care including aeration, weed control, and seasonal treatments.</p>
+                        <div class="price">$125</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Winter Services -->
+            <div id="winterSection" style="display: block;">
+                <div class="hero">
+                    <h1>Professional Snow Plowing Services</h1>
+                    <p>Keep your driveway and property clear all winter long. Reliable snow removal.</p>
+                    <button class="cta-button winter" onclick="showBooking('winter')">Book Snow Plowing</button>
                 </div>
 
-                <div class="service-card" onclick="selectService('full-service')">
-                    <div class="service-icon">🌟</div>
-                    <h3>Full Service</h3>
-                    <p>Complete lawn care including aeration, weed control, and seasonal treatments.</p>
-                    <div class="price">$125</div>
+                <div class="services">
+                    <div class="service-card" onclick="selectService('basic-plow')">
+                        <div class="service-icon">🚜</div>
+                        <h3>Basic Plow</h3>
+                        <p>Standard driveway snow plowing. Quick and efficient snow removal service.</p>
+                        <div class="price winter">$45</div>
+                    </div>
+
+                    <div class="service-card" onclick="selectService('premium-plow')">
+                        <div class="service-icon">❄️</div>
+                        <h3>Premium Snow Removal</h3>
+                        <p>Plowing, salting, and walkway clearing for complete winter maintenance.</p>
+                        <div class="price winter">$85</div>
+                    </div>
+
+                    <div class="service-card" onclick="selectService('full-service-winter')">
+                        <div class="service-icon">🌟</div>
+                        <h3>Full Service</h3>
+                        <p>Complete winter service with plowing, salting, walkway clearing, and ice management.</p>
+                        <div class="price winter">$125</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Booking Form -->
+            <div class="booking-form" id="bookingForm">
+                <h2 style="color: #2c3e50; margin-bottom: 30px;" id="bookingTitle">Book Your Service</h2>
+                <form onsubmit="submitBooking(event)">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="address">Property Address</label>
+                        <input type="text" id="address" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="service">Service Type</label>
+                        <select id="service" required>
+                            <option value="">Select a service</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="date">Preferred Date</label>
+                        <input type="date" id="date" required>
+                    </div>
+
+                    <div class="form-group" id="propertySize">
+                        <label for="size" id="sizeLabel">Property Size (sq ft)</label>
+                        <input type="number" id="size" placeholder="e.g., 5000" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="notes">Additional Notes</label>
+                        <textarea id="notes" rows="4" placeholder="Any special instructions or concerns?"></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-button" id="submitBtn">Submit Booking</button>
+                </form>
+
+                <div class="loading" id="loading">
+                    Sending booking confirmation...
+                </div>
+
+                <div class="booking-summary" id="bookingSummary">
+                    <h3>✅ Booking Confirmed!</h3>
+                    <p id="summaryText"></p>
+                </div>
+
+                <div class="error-message" id="errorMessage">
+                    ⚠️ There was an error sending the email. Please contact us directly at clintonngaokere951@gmail.com
                 </div>
             </div>
         </div>
 
-        <!-- Winter Services -->
-        <div id="winterSection" style="display: none;">
-            <div class="hero">
-                <h1>Professional Snow Plowing Services</h1>
-                <p>Keep your driveway and property clear all winter long. Reliable snow removal.</p>
-                <button class="cta-button winter" onclick="showBooking('winter')">Book Snow Plowing</button>
+        <!-- ABOUT PAGE -->
+        <div id="aboutPage" class="page-section">
+            <div class="about-hero">
+                <h1>About Clinton Mown/Plow</h1>
+                <p>We are a family-owned and operated lawn care and snow removal service dedicated to keeping Richmond Hill properties beautiful and accessible year-round. With years of experience and a commitment to excellence, we've built our reputation on quality work, reliability, and outstanding customer service.</p>
             </div>
 
-            <div class="services">
-                <div class="service-card" onclick="selectService('basic-plow')">
-                    <div class="service-icon">🚜</div>
-                    <h3>Basic Plow</h3>
-                    <p>Standard driveway snow plowing. Quick and efficient snow removal service.</p>
-                    <div class="price winter">$45</div>
-                </div>
+            <div class="content-section">
+                <h2>Our Story</h2>
+                <p>Clinton Mown/Plow was founded with a simple mission: to provide Richmond Hill residents and businesses with dependable, professional property maintenance services they can trust. What started as a small operation has grown into a comprehensive lawn care and snow removal service, but our core values remain the same.</p>
+                
+                <p>We understand the importance of a well-maintained property. Whether it's ensuring your lawn looks its best during the summer months or keeping your driveway clear and safe during winter storms, we're here to help. Our team takes pride in every job we do, treating each property as if it were our own.</p>
+            </div>
 
-                <div class="service-card" onclick="selectService('premium-plow')">
-                    <div class="service-icon">❄️</div>
-                    <h3>Premium Snow Removal</h3>
-                    <p>Plowing, salting, and walkway clearing for complete winter maintenance.</p>
-                    <div class="price winter">$85</div>
+            <div class="values-grid">
+                <div class="value-card">
+                    <h3>🎯 Reliability</h3>
+                    <p>You can count on us to show up on time and complete every job to the highest standard. We're there when you need us, rain or shine.</p>
                 </div>
+                <div class="value-card">
+                    <h3>💪 Quality</h3>
+                    <p>We use professional-grade equipment and proven techniques to deliver exceptional results that exceed expectations.</p>
+                </div>
+                <div class="value-card">
+                    <h3>🤝 Customer Focus</h3>
+                    <p>Your satisfaction is our priority. We listen to your needs and tailor our services to meet your specific requirements.</p>
+                </div>
+                <div class="value-card">
+                    <h3>🌱 Local Pride</h3>
+                    <p>As a local business, we're invested in our community. We take pride in making Richmond Hill look its best.</p>
+                </div>
+            </div>
 
-                <div class="service-card" onclick="selectService('full-service-winter')">
-                    <div class="service-icon">🌟</div>
-                    <h3>Full Service</h3>
-                    <p>Complete winter service with plowing, salting, walkway clearing, and ice management.</p>
-                    <div class="price winter">$125</div>
-                </div>
+            <div class="content-section">
+                <h2>Why Choose Us?</h2>
+                <ul>
+                    <li>Experienced and professional team</li>
+                    <li>State-of-the-art equipment for optimal results</li>
+                    <li>Flexible scheduling to fit your needs</li>
+                    <li>Competitive pricing with transparent quotes</li>
+                    <li>Fully insured for your peace of mind</li>
+                    <li>Satisfaction guaranteed on every job</li>
+                    <li>Year-round service availability</li>
+                    <li>Emergency snow removal services</li>
+                </ul>
+                
+                <p>Whether you need weekly lawn maintenance or emergency snow plowing, Clinton Mown/Plow is here to serve you. Contact us today to learn more about our services or to schedule your first appointment!</p>
             </div>
         </div>
 
-        <div class="booking-form" id="bookingForm">
-            <h2 style="color: #2c3e50; margin-bottom: 30px;" id="bookingTitle">Book Your Service</h2>
-            <form onsubmit="submitBooking(event)">
-                <div class="form-group">
-                    <label for="name">Full Name</label>
-                    <input type="text" id="name" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="phone">Phone Number</label>
-                    <input type="tel" id="phone" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="address">Property Address</label>
-                    <input type="text" id="address" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="service">Service Type</label>
-                    <select id="service" required>
-                        <option value="">Select a service</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="date">Preferred Date</label>
-                    <input type="date" id="date" required>
-                </div>
-
-                <div class="form-group" id="propertySize">
-                    <label for="size" id="sizeLabel">Property Size (sq ft)</label>
-                    <input type="number" id="size" placeholder="e.g., 5000" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="notes">Additional Notes</label>
-                    <textarea id="notes" rows="4" placeholder="Any special instructions or concerns?"></textarea>
-                </div>
-
-                <button type="submit" class="submit-button" id="submitBtn">Submit Booking</button>
-            </form>
-
-            <div class="loading" id="loading">
-                Sending booking confirmation...
+        <!-- CONTACT PAGE -->
+        <div id="contactPage" class="page-section">
+            <div class="contact-hero">
+                <h1>Get In Touch</h1>
+                <p>Have questions or ready to book? We're here to help!</p>
             </div>
 
-            <div class="booking-summary" id="bookingSummary">
-                <h3>✅ Booking Confirmed!</h3>
-                <p id="summaryText"></p>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="icon">📧</div>
+                    <h3>Email Us</h3>
+                    <p><a href="mailto:clintonngaokere951@gmail.com">clintonngaokere951@gmail.com</a></p>
+                    <p>We typically respond within 24 hours</p>
+                </div>
+
+                <div class="contact-card">
+                    <div class="icon">📍</div>
+                    <h3>Service Area</h3>
+                    <p>Richmond Hill, Ontario</p>
+                    <p>And surrounding areas</p>
+                </div>
+
+                <div class="contact-card">
+                    <div class="icon">⏰</div>
+                    <h3>Hours</h3>
+                    <p>Monday - Saturday: 7:00 AM - 8:00 PM</p>
+                    <p>Sunday: 8:00 AM - 6:00 PM</p>
+                    <p>24/7 Emergency Snow Removal</p>
+                </div>
             </div>
 
-            <div class="error-message" id="errorMessage">
-                ⚠️ There was an error sending the email. Please contact us directly at clintonngaokere951@gmail.com
+            <div class="content-section">
+                <h2>Frequently Asked Questions</h2>
+                
+                <h3>What areas do you service?</h3>
+                <p>We currently service Richmond Hill, Ontario and surrounding areas. If you're unsure whether we service your area, please contact us and we'll be happy to confirm.</p>
+                
+                <h3>How do I book a service?</h3>
+                <p>You can easily book through our website by clicking the "Book Service" page and filling out the booking form. We'll send you a confirmation email with all the details.</p>
+                
+                <h3>Do you offer recurring services?</h3>
+                <p>Yes! We offer weekly, bi-weekly, and monthly lawn care services, as well as seasonal snow removal contracts. Contact us to discuss a recurring service plan that fits your needs.</p>
+                
+                <h3>What if I need to cancel or reschedule?</h3>
+                <p>We understand plans change. Please contact us as soon as possible if you need to cancel or reschedule. We ask for at least 24 hours notice when possible.</p>
+                
+                <h3>Are you insured?</h3>
+                <p>Yes, Clinton Mown/Plow is fully insured for your protection and peace of mind.</p>
+                
+                <h3>Do you offer emergency snow removal?</h3>
+                <p>Yes! We offer 24/7 emergency snow removal services during winter months. Contact us any time for urgent snow plowing needs.</p>
+                
+                <h3>How do you determine pricing?</h3>
+                <p>Our pricing is based on the service type, property size, and specific requirements. We offer transparent pricing with no hidden fees. You'll know exactly what you're paying before we start any work.</p>
             </div>
         </div>
 
@@ -942,33 +1390,46 @@
         let bookings = [];
         let isSummerMode = false;
         let currentServiceType = 'winter';
-        let userData = JSON.parse(localStorage.getItem('clintonMownPlowUsers') || '{}');
+        let userData = {};
 
-        window.onload = async function() {
-            await loadCurrentSession();
+        window.onload = function() {
+            loadUserData();
+            loadCurrentSession();
             updateSeasonDisplay();
             createFallingItems();
             updateAuthUI();
         };
 
-        async function loadCurrentSession() {
+        function loadUserData() {
+            const stored = localStorage.getItem('clintonMownPlowUsers');
+            if (stored) {
+                try {
+                    userData = JSON.parse(stored);
+                } catch (e) {
+                    userData = {};
+                }
+            }
+        }
+
+        function saveUserData() {
+            localStorage.setItem('clintonMownPlowUsers', JSON.stringify(userData));
+        }
+
+        function loadCurrentSession() {
             const loggedInUser = localStorage.getItem('clintonMownPlowCurrentUser');
             if (loggedInUser && userData[loggedInUser]) {
                 currentUser = userData[loggedInUser];
-                console.log('Session restored:', currentUser);
             }
         }
 
         function saveCurrentSession() {
             if (currentUser) {
                 localStorage.setItem('clintonMownPlowCurrentUser', currentUser.email);
-                console.log('Session saved');
             }
         }
 
         function clearCurrentSession() {
             localStorage.removeItem('clintonMownPlowCurrentUser');
-            console.log('Session cleared');
         }
 
         function createFallingItems() {
@@ -987,6 +1448,23 @@
                 elem.style.animationDuration = (Math.random() * 3 + 5) + 's';
                 elem.style.animationDelay = Math.random() * 5 + 's';
                 container.appendChild(elem);
+            }
+        }
+
+        function showPage(page) {
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            document.getElementById(page + 'Page').classList.add('active');
+            document.getElementById('nav-' + page).classList.add('active');
+            
+            if (page !== 'book') {
+                document.getElementById('bookingForm').classList.remove('active');
             }
         }
 
@@ -1073,7 +1551,7 @@
             };
             
             userData[email] = newUser;
-            localStorage.setItem('clintonMownPlowUsers', JSON.stringify(userData));
+            saveUserData();
             
             successDiv.textContent = 'Account created successfully! You can now sign in.';
             successDiv.classList.add('active');
