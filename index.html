@@ -1163,21 +1163,21 @@
                         <div class="service-icon">🏡</div>
                         <h3>Basic Mow</h3>
                         <p>Standard lawn mowing with edging and cleanup. Perfect for regular maintenance.</p>
-                        <div class="price">$45</div>
+                        <div class="price">$15</div>
                     </div>
 
                     <div class="service-card" onclick="selectService('premium-care')">
                         <div class="service-icon">✨</div>
                         <h3>Premium Care</h3>
                         <p>Mowing, edging, trimming, blowing, and fertilization for a pristine lawn.</p>
-                        <div class="price">$85</div>
+                        <div class="price">$25</div>
                     </div>
 
                     <div class="service-card" onclick="selectService('full-service')">
                         <div class="service-icon">🌟</div>
                         <h3>Full Service</h3>
                         <p>Complete lawn care including aeration, weed control, and seasonal treatments.</p>
-                        <div class="price">$125</div>
+                        <div class="price">$35</div>
                     </div>
                 </div>
             </div>
@@ -1195,21 +1195,21 @@
                         <div class="service-icon">🚜</div>
                         <h3>Basic Plow</h3>
                         <p>Standard driveway snow plowing. Quick and efficient snow removal service.</p>
-                        <div class="price winter">$45</div>
+                        <div class="price winter">$15</div>
                     </div>
 
                     <div class="service-card" onclick="selectService('premium-plow')">
                         <div class="service-icon">❄️</div>
                         <h3>Premium Snow Removal</h3>
                         <p>Plowing, salting, and walkway clearing for complete winter maintenance.</p>
-                        <div class="price winter">$85</div>
+                        <div class="price winter">$25</div>
                     </div>
 
                     <div class="service-card" onclick="selectService('full-service-winter')">
                         <div class="service-icon">🌟</div>
                         <h3>Full Service</h3>
                         <p>Complete winter service with plowing, salting, walkway clearing, and ice management.</p>
-                        <div class="price winter">$125</div>
+                        <div class="price winter">$35</div>
                     </div>
                 </div>
             </div>
@@ -1658,17 +1658,17 @@
             if (currentServiceType === 'summer') {
                 serviceSelect.innerHTML = `
                     <option value="">Select a service</option>
-                    <option value="basic-mow">Basic Mow - $45</option>
-                    <option value="premium-care">Premium Care - $85</option>
-                    <option value="full-service">Full Service - $125</option>
+                    <option value="basic-mow">Basic Mow - $15</option>
+                    <option value="premium-care">Premium Care - $25</option>
+                    <option value="full-service">Full Service - $35</option>
                 `;
                 sizeLabel.textContent = 'Lawn Size (sq ft)';
             } else {
                 serviceSelect.innerHTML = `
                     <option value="">Select a service</option>
-                    <option value="basic-plow">Basic Plow - $45</option>
-                    <option value="premium-plow">Premium Snow Removal - $85</option>
-                    <option value="full-service-winter">Full Service - $125</option>
+                    <option value="basic-plow">Basic Plow - $15</option>
+                    <option value="premium-plow">Premium Snow Removal - $25</option>
+                    <option value="full-service-winter">Full Service - $35</option>
                 `;
                 sizeLabel.textContent = 'Driveway Size (sq ft)';
             }
