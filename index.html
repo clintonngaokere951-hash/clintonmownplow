@@ -1009,8 +1009,9 @@
     <!-- Valentine's Special Banner -->
     <div class="valentine-banner">
         <h2>💝 Valentine's Day Special! 💝</h2>
-        <p>Show your home some love! Get <strong>35% OFF</strong> all services through February 17th</p>
-        <span class="discount-code">Use Code: LOVE2025</span>
+        <p>Show your home some love! Get <strong>35% OFF</strong> all services from now until March 1st</p>
+        <span class="discount-code">Use Code: LOVE2026</span>
+        <p style="font-size: 14px; margin-top: 8px; opacity: 0.9;">*Enter promo code at checkout to receive discount</p>
     </div>
 
     <div class="falling-container" id="fallingContainer"></div>
@@ -1174,7 +1175,7 @@
                     
                     <h3>10. Contact Us</h3>
                     <p>If you have questions about this Privacy Policy, please contact us at:</p>
-                    <p>Email: clintonngaokere951@gmail.com<br>
+                    <p>Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="0467686d6a706b6a6a63656b6f6176613d3135446369656d682a676b69">[email&#160;protected]</a><br>
                     Service Area: Richmond Hill, Ontario</p>
                 </div>
                 <div class="modal-buttons">
@@ -1368,7 +1369,7 @@
 
                     <div class="form-group">
                         <label for="promoCode">Promo Code (Optional)</label>
-                        <input type="text" id="promoCode" placeholder="Enter LOVE2025 for 35% off" value="LOVE2025">
+                        <input type="text" id="promoCode" placeholder="Enter LOVE2026 for 35% off">
                     </div>
 
                     <div class="form-group">
@@ -1389,7 +1390,7 @@
                 </div>
 
                 <div class="error-message" id="errorMessage">
-                    ⚠️ There was an error sending the email. Please contact us directly at clintonngaokere951@gmail.com
+                    ⚠️ There was an error sending the email. Please contact us directly at <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="492a2520273d2627272e2826222c3b2c707c78092e24282025672a2624">[email&#160;protected]</a>
                 </div>
             </div>
         </div>
@@ -1455,7 +1456,7 @@
                 <div class="contact-card">
                     <div class="icon">📧</div>
                     <h3>Email Us</h3>
-                    <p><a href="mailto:clintonngaokere951@gmail.com">clintonngaokere951@gmail.com</a></p>
+                    <p><a href="/cdn-cgi/l/email-protection#accfc0c5c2d8c3c2c2cbcdc3c7c9dec995999deccbc1cdc5c082cfc3c1"><span class="__cf_email__" data-cfemail="fa999693948e9594949d9b95919f889fc3cfcbba9d979b9396d4999597">[email&#160;protected]</span></a></p>
                     <p>We typically respond within 24 hours</p>
                 </div>
 
@@ -1484,7 +1485,7 @@
         </footer>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     
     <script>
         emailjs.init('tFndjI3qNJNGxWnSW');
@@ -1774,17 +1775,17 @@
             if (currentServiceType === 'summer') {
                 serviceSelect.innerHTML = `
                     <option value="">Select a service</option>
-                    <option value="basic-mow">Basic Mow - $9.75 (35% OFF - Was $15)</option>
-                    <option value="premium-care">Premium Care - $16.25 (35% OFF - Was $25)</option>
-                    <option value="full-service">Full Service - $22.75 (35% OFF - Was $35)</option>
+                    <option value="basic-mow">Basic Mow - $15</option>
+                    <option value="premium-care">Premium Care - $25</option>
+                    <option value="full-service">Full Service - $35</option>
                 `;
                 sizeLabel.textContent = 'Lawn Size (sq ft)';
             } else {
                 serviceSelect.innerHTML = `
                     <option value="">Select a service</option>
-                    <option value="basic-plow">Basic Plow - $9.75 (35% OFF - Was $15)</option>
-                    <option value="premium-plow">Premium Snow Removal - $16.25 (35% OFF - Was $25)</option>
-                    <option value="full-service-winter">Full Service - $22.75 (35% OFF - Was $35)</option>
+                    <option value="basic-plow">Basic Plow - $15</option>
+                    <option value="premium-plow">Premium Snow Removal - $25</option>
+                    <option value="full-service-winter">Full Service - $35</option>
                 `;
                 sizeLabel.textContent = 'Driveway Size (sq ft)';
             }
@@ -1825,7 +1826,7 @@
             loading.classList.add('active');
 
             const promoCode = document.getElementById('promoCode').value.toUpperCase();
-            const isValentinePromo = promoCode === 'LOVE2025';
+            const isValentinePromo = promoCode === 'LOVE2026';
 
             const booking = {
                 name: document.getElementById('name').value,
@@ -1899,7 +1900,7 @@
                 document.getElementById('date').value = '';
                 document.getElementById('size').value = '';
                 document.getElementById('notes').value = '';
-                document.getElementById('promoCode').value = 'LOVE2025';
+                document.getElementById('promoCode').value = '';
 
             } catch (error) {
                 console.error('Email send error:', error);
